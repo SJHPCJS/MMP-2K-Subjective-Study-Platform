@@ -1,0 +1,84 @@
+{
+  "image_list": [
+    {
+      "image_id": 1,
+      "url": "./examples/1.png",
+      "max_rate": "100",
+      "min_rate": "75",
+      "reason": "The image is very sharp, and the wasp's head is in clear focus. There is very little noise in the image. The image has a wide dynamic range, with good detail in both the shadows and highlights.",
+      "recommended tag": "Generally good quality, high resolution"
+    },
+    {
+      "image_id": 2,
+      "url": "./examples/2.png",
+      "max_rate": "100",
+      "min_rate": "75",
+      "reason": "The image is very sharp, and the cat's eyes are in clear focus. There is very little noise in the image. The quality of the left part is extremely good, with detail in both the shadows and highlights.",
+      "recommended tag": "Good quality, sharp focus"
+    },
+    {
+      "image_id": 3,
+      "url": "./examples/3.png",
+      "max_rate": "100",
+      "min_rate": "75",
+      "reason": "The image is sharp, and the details of the bee and the flower are clearly visible. However, the part of wings are not so clear with some motion blur.",
+      "recommended tag": "Slightly motion blur at the center"
+    },
+    {
+      "image_id": 4,
+      "url": "./examples/4.png",
+      "max_rate": "75",
+      "min_rate": "25",
+      "reason": "Most part of the image is sharp, with some details missing. The image has some underexposure issue in the center. In conclusion, the quality of the image is in the fair standard.",
+      "recommended tag": "Slightly underexposure at the center"
+    },
+    {
+      "image_id": 5,
+      "url": "./examples/5.png",
+      "max_rate": "75",
+      "min_rate": "25",
+      "reason": "The image is not so sharp with low-resolution. However, the image can be clearly seen. For the center of the image, with some underexposures, some details are missing.",
+      "recommended tag": "slightly low-resolution at the whole image, Slightly underexposure at the center"
+    },
+    {
+      "image_id": 6,
+      "url": "./examples/6.png",
+      "max_rate": "75",
+      "min_rate": "25",
+      "reason": "This image has some overexposure at the whole page. Besides that, the blur happens at almost all the legs of the ant. The image achieve the basic level of the quality.",
+      "recommended tag": "Slightly overexposure at the whole image, Slightly blur at the top-left, top-right, bottom-right"
+    },
+    {
+      "image_id": 7,
+      "url": "./examples/7.png",
+      "max_rate": "25",
+      "min_rate": "0",
+      "reason": "The image has lost some details due to the low resolution. The brightness of the image is not in good condition either. Some underexposure happens at the whole image.",
+      "recommended tag": "Medially low resolution at the whole image, Medially underexposure at the whole image, Out of focus"
+    },
+    {
+      "image_id": 8,
+      "url": "./examples/8.png",
+      "max_rate": "25",
+      "min_rate": "0",
+      "reason": "The overall graininess of this image is noticeable with a low resolution. The details of the image are blurred and it is impossible to make out specific textures.",
+      "recommended tag": "Medially grainy at the whole image, Medially low resolution at the whole image"
+    },
+    {
+      "image_id": 9,
+      "url": "./examples/9.png",
+      "max_rate": "25",
+      "min_rate": "0",
+      "reason": "The overall brightness of this image is low and the overall picture is dark. The image is partially unfocused. The details of the image are not easily recognizable and require close inspection to see.",
+      "recommended tag": "Strongly out of focus at the top-left and the bottom-left"
+    },
+    {
+      "image_id": 10,
+      "url": "./examples/10.png",
+      "max_rate": "25",
+      "min_rate": "0",
+      "reason": "The image is at low resolution, which leads to the detail missing. The objects are not clear to be seen because of the out of focus. The whole quality is at the worst situation.",
+      "recommended tag": "Strongly low resolution at the whole image, Strongly out of focus at the whole image"
+    }
+  ]
+}
