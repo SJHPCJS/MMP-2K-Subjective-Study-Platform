@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     getImageUrl(imageId) {
-      return require(`@/components/examples/${imageId}.png`);
+      return require(`@/components/examples/${imageId}.jpg`);
     },
     handlePageChange(page) {
       this.currentPage = page;

@@ -84,8 +84,10 @@
     </el-main>
     <el-footer class="footer">
       <div class="button-group-left">
-        <el-button type="primary" round @click="goToMenuPage">Menu</el-button>
-        <el-button type="primary" round @click="goToResultPage">Result</el-button>
+
+
+        <el-button type="primary" round @click="goToReferenceIntroPage">Introduction</el-button>
+        <el-button type="primary" round @click="goToReferenceExamplePage">Examples</el-button>
       </div>
       <el-pagination
           class="pagination"
@@ -97,8 +99,8 @@
           :current-page="currentPage"
       ></el-pagination>
       <div class="button-group-right">
-        <el-button type="primary" round @click="goToReferenceIntroPage">Introduction</el-button>
-        <el-button type="primary" round @click="goToReferenceExamplePage">Examples</el-button>
+         <el-button type="primary" round @click="goToMenuPage">Menu</el-button>
+         <el-button type="primary" round @click="goToResultPage">Result</el-button>
       </div>
     </el-footer>
   </el-container>
@@ -211,7 +213,7 @@ export default {
     updateCurrentImage() {
       const currentImage = this.paginatedImages[0];
       this.currentImageUrl = currentImage ? currentImage.url : '';
-      this.value = currentImage && currentImage.rate !== undefined && currentImage.rate !== "NULL" ? currentImage.rate : null;
+      this.value = currentImage && currentImage.rate !== undefined && currentImage.rate !== "NULL" ? currentImage.rate : 50;
       this.rows = currentImage && currentImage.tagList ? currentImage.tagList : [];
       this.textarea1 = currentImage && currentImage.description !== "NULL" ? currentImage.description : '';
       this.$nextTick(() => {
