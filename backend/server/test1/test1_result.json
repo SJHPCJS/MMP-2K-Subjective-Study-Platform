@@ -99,7 +99,7 @@
         "image_id": "9",
         "url": "D:\\DIICSU\\MP-IQA\\code\\MP-IQA_Pilot_Study\\backend\\server\\image_base\\9.jpg",
         "batch": "1",
-        "rate": "NULL",
+        "rate": 75,
         "tagList": [],
         "description": "NULL"
     },
@@ -140,8 +140,14 @@
         "url": "D:\\DIICSU\\MP-IQA\\code\\MP-IQA_Pilot_Study\\backend\\server\\image_base\\44.jpg",
         "batch": "1",
         "rate": "NULL",
-        "tagList": [],
-        "description": "NULL"
+        "tagList": [
+            {
+                "magnitude": "slightly",
+                "factor": "out of focus",
+                "position": "top right"
+            }
+        ],
+        "description": ""
     },
     {
         "image_id": "30",

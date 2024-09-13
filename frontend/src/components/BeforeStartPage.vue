@@ -9,7 +9,7 @@
         <h1 class="before-start">Before start...</h1>
         <div class="text-container">
           <p class="intro-text">
-            We want to recall that this IQA only focuses on the
+            We want to recall that this IQA task only focuses on the
             <span class="highlight">technical quality</span>
             of the images.
           </p>

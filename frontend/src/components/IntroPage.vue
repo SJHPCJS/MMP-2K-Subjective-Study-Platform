@@ -8,7 +8,7 @@
       <div class="welcome-container">
         <h1>Welcome {{ userId }}!</h1>
       </div>
-      <p class="intro-text">We are conducting an academic study on the perception of the technical quality of macro photography. Your task is to evaluate the quality of macro photography images and identify the factors within the images that influence their overall quality.</p>
+      <p class="intro-text">We are conducting an academic research on the perception of the technical quality of macro photography. Your task is to evaluate the quality of macro photography images and identify the factors within the images that influence their overall quality.</p>
       <p class="intro-text"><strong>Introduction</strong><br>This Image Quality Assessment (IQA) specifically focuses on the technical aspects of image quality, emphasizing the evaluation of images based on their technical attributes. In contrast to assessments that consider aesthetic quality and compositional elements, the uniqueness of this study lies in the exclusion of aesthetic judgment and artistic attributes from consideration.</p>
       <div class="button">
         <el-button type="primary" round @click="goToBeforeStartPage">Go!</el-button>
