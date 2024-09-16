@@ -58,7 +58,7 @@ def check_batches(user_id):
     result = {}
     for batch in completed_images:
         if total_images[batch] > 0:
-            result[batch] = (completed_images[batch] / total_images[batch]) * 100
+            result[batch] = round((completed_images[batch] / total_images[batch]) * 100,2)
         else:
             result[batch] = 0
 
