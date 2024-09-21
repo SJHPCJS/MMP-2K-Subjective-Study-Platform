@@ -9,9 +9,9 @@
         <div class="demo-image__preview">
           <img :src="currentImageUrl" class="image" ref="imageElement">
         </div>
-        <el-tabs class="tabs" type="border-card" :tab-position="tabPosition">
+        <el-tabs class="tabs" type="border-card" :tab-position="tabPosition" v-model="activeName">
           <!-- Rating Tab -->
-          <el-tab-pane label="Rating">
+          <el-tab-pane label="Rating" name="Rating">
             <div class="block">
               <div class="rating-status">
                 <span>If Rated:</span>
@@ -24,7 +24,7 @@
           </el-tab-pane>
 
           <!-- Annotation Tab -->
-          <el-tab-pane label="Annotation">
+          <el-tab-pane label="Annotation" name="Annotation">
             <div class="block">
               <!-- Status Indicator -->
               <div class="annotation-status">
@@ -111,42 +111,46 @@
 
 <script>
 import axios from 'axios';
-import {Message} from 'element-ui';
+import { Message } from 'element-ui';
 
 export default {
   created() {
     this.userId = this.$route.params.id;
     this.batch = this.$route.params.batch;
     this.fetchImageData();
+    window.addEventListener('keydown', this.handleKeydown);
+  },
+  beforeDestroy() {
+    window.removeEventListener('keydown', this.handleKeydown);
   },
   data() {
     return {
-      activeName: '0',
+      activeName: 'Rating', // Default active tab name
       dynamicTags: [],
       rows: [],
       options1: [
-        {value: 'slightly', label: 'slightly'},
-        {value: 'medially', label: 'medially'},
-        {value: 'strongly', label: 'strongly'},
+        { value: 'slightly', label: 'slightly' },
+        { value: 'medially', label: 'medially' },
+        { value: 'strongly', label: 'strongly' },
       ],
       options2: [
-        {value: 'overexposure', label: 'overexposure'},
-        {value: 'underexposure', label: 'underexposure'},
-        {value: 'out of focus', label: 'out of focus'},
-        {value: 'motion blur', label: 'motion blur'},
-        {value: 'noisy and grainy', label: 'noisy and grainy'},
+        { value: 'overexposure', label: 'overexposure' },
+        { value: 'underexposure', label: 'underexposure' },
+        { value: 'out of focus', label: 'out of focus' },
+        { value: 'motion blur', label: 'motion blur' },
+        { value: 'noisy and grainy', label: 'noisy and grainy' },
       ],
       options3: [
-        {value: 'center', label: 'center'},
-        {value: 'left', label: 'left'},
-        {value: 'right', label: 'right'},
-        {value: 'top', label: 'top'},
-        {value: 'bottom', label: 'bottom'},
-        {value: 'top left', label: 'top left'},
-        {value: 'top right', label: 'top right'},
-        {value: 'bottom left', label: 'bottom left'},
-        {value: 'bottom right', label: 'bottom right'},
-        {value: 'whole image', label: 'whole image'},
+        { value: 'center', label: 'center' },
+        { value: 'left', label: 'left' },
+        { value: 'right', label: 'right' },
+        { value: 'top', label: 'top' },
+        { value: 'bottom', label: 'bottom' },
+        { value: 'top left', label: 'top left' },
+        { value: 'top right', label: 'top right' },
+        { value: 'bottom left', label: 'bottom left' },
+        { value: 'bottom right', label: 'bottom right' },
+        { value: 'whole image', label: 'whole image' },
       ],
       inputVisible: false,
       textarea1: '',
@@ -186,9 +190,9 @@ export default {
     isRated() {
       const currentImage = this.paginatedImages[0];
       return (
-          currentImage &&
-          currentImage.rate !== undefined &&
-          currentImage.rate !== 'NULL'
+        currentImage &&
+        currentImage.rate !== undefined &&
+        currentImage.rate !== 'NULL'
       );
     },
     isAnnotated() {
@@ -211,6 +215,50 @@ export default {
     },
   },
   methods: {
+    handleKeydown(event) {
+      // Bind left arrow key to go to the previous page
+      if (event.key === 'ArrowLeft') {
+        if (this.currentPage > 1) {
+          this.handlePageChange(this.currentPage - 1);
+        }
+      }
+      // Bind right arrow key to go to the next page
+      else if (event.key === 'ArrowRight') {
+        if (this.currentPage < this.total) {
+          this.handlePageChange(this.currentPage + 1);
+        }
+      }
+      // Bind Enter key to save actions based on the active tab
+      else if (event.key === 'Enter') {
+        if (this.activeName === 'Rating') {
+          this.saveRating();
+        } else if (this.activeName === 'Annotation') {
+          this.saveAnnotation();
+        }
+      }
+      // Bind Up Arrow key to increase slider value by 25
+      else if (event.key === 'ArrowUp' && this.activeName === 'Rating') {
+        if (this.value < 100) {
+          this.value = this.getNextStep(this.value);
+        }
+      }
+      // Bind Down Arrow key to decrease slider value by 25
+      else if (event.key === 'ArrowDown' && this.activeName === 'Rating') {
+        if (this.value > 0) {
+          this.value = this.getPreviousStep(this.value);
+        }
+      }
+    },
+    getNextStep(currentValue) {
+      const steps = [0, 25, 50, 75, 100];
+      const currentIndex = steps.indexOf(currentValue);
+      return steps[Math.min(currentIndex + 1, steps.length - 1)];
+    },
+    getPreviousStep(currentValue) {
+      const steps = [0, 25, 50, 75, 100];
+      const currentIndex = steps.indexOf(currentValue);
+      return steps[Math.max(currentIndex - 1, 0)];
+    },
     fetchImageData() {
       axios
           .get(`http://127.0.0.1:5001/get_image/${this.userId}`, {
