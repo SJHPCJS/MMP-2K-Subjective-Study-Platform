@@ -137,7 +137,7 @@ html, body, #app, .el-container {
 .image-preview {
   width: 100%;
   height: auto;
-  max-height: 500px; /* 根据需要调整 */
+  max-height: 350px; /* 根据需要调整 */
 }
 
 .el-footer {

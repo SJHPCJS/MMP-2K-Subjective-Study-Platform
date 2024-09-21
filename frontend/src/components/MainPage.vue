@@ -89,8 +89,8 @@
 
     <el-footer class="footer">
       <div class="button-group-left">
-        <el-button type="primary" round @click="goToReferenceIntroPage">Introduction</el-button>
-        <el-button type="primary" round @click="goToReferenceExamplePage">Examples</el-button>
+        <el-button type="primary" round @click="goToReferenceIntroPage">Distortion Types</el-button>
+        <el-button type="primary" round @click="goToReferenceExamplePage">Rating Examples</el-button>
       </div>
       <el-pagination
           class="pagination"
