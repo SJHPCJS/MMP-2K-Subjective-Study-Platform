@@ -139,7 +139,7 @@
         "image_id": "44",
         "url": "D:\\DIICSU\\MP-IQA\\code\\MP-IQA_Pilot_Study\\backend\\server\\image_base\\44.jpg",
         "batch": "1",
-        "rate": "NULL",
+        "rate": 25,
         "tagList": [
             {
                 "magnitude": "slightly",
