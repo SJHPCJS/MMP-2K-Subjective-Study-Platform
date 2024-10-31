@@ -1,0 +1,62 @@
+{
+    "1": {
+        "score_range": {
+            "lower_bound": 50,
+            "upper_bound": 100
+        }
+    },
+    "2": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "3": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "4": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "5": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "6": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "7": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "8": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 25
+        }
+    },
+    "9": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "10": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    }
+}
