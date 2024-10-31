@@ -26,7 +26,7 @@ def login():
         return jsonify({'error': 'Invalid input'}), 400
 
     user_id = data['id']
-    ids = read_ids_from_file('id.txt')
+    ids = read_ids_from_file('id.txt')  # 确保id.txt在同一个目录下
 
     if user_id in ids:
         return jsonify({'message': 'Record found'}), 200
@@ -70,22 +70,22 @@ def get_image(id):
         batch = request.args.get('batch')
         print(f"Received request for ID: {id} and batch: {batch}")
 
-
+        # 构建文件路径
         file_path = os.path.join(BASE_DIR, id, f'{id}_result.json')
         print(f"Constructed file path: {file_path}")
 
-
+        # 检查文件是否存在
         if not os.path.exists(file_path):
             print(f"File not found: {file_path}")
             return jsonify({"error": "File not found"}), 404
 
-
+        # 读取文件内容
         with open(file_path, 'r', encoding='utf-8') as file:
             data = json.load(file)
 
         filtered_data = []
 
-
+        # 处理并生成图片URL
         for item in data:
             img_path = item.get('url')
             if img_path and os.path.exists(img_path):
@@ -100,7 +100,7 @@ def get_image(id):
 
         print(f"Returning data: {filtered_data}")
 
-
+        # 返回JSON数据
         return jsonify(filtered_data), 200
 
     except Exception as e:
@@ -136,11 +136,11 @@ def submit_rate(id):
             print(f"Result file not found: {result_file_path}")
             return jsonify({"error": "Result file not found"}), 404
 
-
+        # 读取结果文件内容
         with open(result_file_path, 'r', encoding='utf-8') as file:
             data = json.load(file)
 
-
+        # 找到并更新对应的图片信息
         image_updated = False
         for image in data:
             print(f"Checking image: {image}")
@@ -153,7 +153,7 @@ def submit_rate(id):
             print(f"Image not found: image_id={image_id}, batch={batch}")
             return jsonify({"error": "Image not found"}), 404
 
-
+        # 写回更新后的数据
         with open(result_file_path, 'w', encoding='utf-8') as file:
             json.dump(data, file, ensure_ascii=False, indent=4)
 
@@ -168,7 +168,7 @@ def submit_rate(id):
 def update_data(id):
     try:
         data = request.json
-        image_id = str(data.get('image_id'))
+        image_id = str(data.get('image_id'))  # Convert image_id to string for comparison
         tag_list = data.get('tagList')
         description = data.get('description')
 
@@ -177,7 +177,7 @@ def update_data(id):
         if image_id is None or tag_list is None or description is None:
             return jsonify({"error": "Missing required fields"}), 400
 
-
+        # 构建用户的结果文件路径
         result_file_path = os.path.join(BASE_DIR, id, f"{id}_result.json")
         print(f"Result file path: {result_file_path}")
 
@@ -185,11 +185,11 @@ def update_data(id):
             print(f"Result file not found: {result_file_path}")
             return jsonify({"error": "Result file not found"}), 404
 
-
+        # 读取结果文件内容
         with open(result_file_path, 'r', encoding='utf-8') as file:
             data = json.load(file)
 
-
+        # 找到并更新对应的图片信息
         image_updated = False
         for image in data:
             print(f"Checking image: {image}")
@@ -203,7 +203,7 @@ def update_data(id):
             print(f"Image not found: image_id={image_id}")
             return jsonify({"error": "Image not found"}), 404
 
-
+        # 写回更新后的数据
         with open(result_file_path, 'w', encoding='utf-8') as file:
             json.dump(data, file, ensure_ascii=False, indent=4)
 

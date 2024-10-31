@@ -53,7 +53,7 @@ def create_json(user_id, image_batches, user_path, image_base_path):
             }
             image_data.append(image_info)
 
-
+    # 随机打乱image_data
     random.shuffle(image_data)
 
     json_path = os.path.join(user_path, f'{user_id}_result.json')

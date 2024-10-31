@@ -12,5 +12,3 @@ wts
 hjr
 zjf
 ydg
-hello
-final_test

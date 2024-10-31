@@ -23,6 +23,7 @@ def process_user_data():
                 rate = entry["rate"]
                 all_data[user][image_id] = rate
 
+            # 对每个用户的数据按 image_id 进行排序
             all_data[user] = dict(sorted(all_data[user].items(), key=lambda x: int(x[0])))
 
 def save_combined_data(output_file):
