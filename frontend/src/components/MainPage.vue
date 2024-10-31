@@ -26,6 +26,9 @@
           <!-- Annotation Tab -->
           <el-tab-pane label="Annotation" name="Annotation">
             <div class="block">
+              <div class="image-score">
+      <span>Score: {{ score }}</span>
+    </div>
               <!-- Status Indicator -->
               <div class="annotation-status">
                 <span>If Annotated:</span>
@@ -111,7 +114,8 @@
 
 <script>
 import axios from 'axios';
-import { Message } from 'element-ui';
+import {Message} from 'element-ui';
+import mosScores from '@/components/final_image_mos.json';
 
 export default {
   created() {
@@ -125,32 +129,36 @@ export default {
   },
   data() {
     return {
-      activeName: 'Rating', // Default active tab name
+      activeName: 'Annotation', // Default active tab name
       dynamicTags: [],
       rows: [],
       options1: [
-        { value: 'slightly', label: 'slightly' },
-        { value: 'medially', label: 'medially' },
-        { value: 'strongly', label: 'strongly' },
+        {value: 'mild', label: 'mild'},
+        {value: 'medium', label: 'medium'},
+        {value: 'strong', label: 'strong'},
       ],
       options2: [
-        { value: 'overexposure', label: 'overexposure' },
-        { value: 'underexposure', label: 'underexposure' },
-        { value: 'out of focus', label: 'out of focus' },
-        { value: 'motion blur', label: 'motion blur' },
-        { value: 'noisy and grainy', label: 'noisy and grainy' },
+        {value: 'overexposure', label: 'overexposure'},
+        {value: 'underexposure', label: 'underexposure'},
+        {value: 'out of focus', label: 'out of focus'},
+        {value: 'motion blur', label: 'motion blur'},
+        {value: 'noisy and grainy', label: 'noisy and grainy'},
       ],
-      options3: [
-        { value: 'center', label: 'center' },
-        { value: 'left', label: 'left' },
-        { value: 'right', label: 'right' },
-        { value: 'top', label: 'top' },
-        { value: 'bottom', label: 'bottom' },
-        { value: 'top left', label: 'top left' },
-        { value: 'top right', label: 'top right' },
-        { value: 'bottom left', label: 'bottom left' },
-        { value: 'bottom right', label: 'bottom right' },
-        { value: 'whole image', label: 'whole image' },
+      options3: [  {value: 'center top',label:'center top'},
+        {value: 'center', label: 'center'},
+        {value: 'left', label: 'left'},
+        {value: 'right', label: 'right'},
+        {value: 'top', label: 'top'},
+        {value: 'bottom', label: 'bottom'},
+        {value: 'top left', label: 'top left'},
+        {value: 'top right', label: 'top right'},
+        {value: 'bottom left', label: 'bottom left'},
+        {value: 'bottom right', label: 'bottom right'},
+        {value: 'center right', label:'center right'},
+        {value: 'center left', label: 'center left'},
+          {value: 'center bottom', label:'center bottom'},
+          {value: 'whole image', label: 'whole image'},
+
       ],
       inputVisible: false,
       textarea1: '',
@@ -174,6 +182,7 @@ export default {
       total: 0,
       currentPage: 1,
       pageSize: 1,
+      score: null,
     };
   },
   watch: {
@@ -190,9 +199,9 @@ export default {
     isRated() {
       const currentImage = this.paginatedImages[0];
       return (
-        currentImage &&
-        currentImage.rate !== undefined &&
-        currentImage.rate !== 'NULL'
+          currentImage &&
+          currentImage.rate !== undefined &&
+          currentImage.rate !== 'NULL'
       );
     },
     isAnnotated() {
@@ -280,11 +289,15 @@ export default {
               } else {
                 this.handlePageChange(1);
               }
+              this.setImageScore(data[0].image_id);
             }
           })
           .catch((error) => {
             console.error('Error fetching image data:', error);
           });
+    },
+    setImageScore(imageId) {
+      this.score = mosScores[imageId] || 0; // Default to a message if no score is found
     },
     handlePageChange(page) {
       this.currentPage = page;
@@ -310,6 +323,7 @@ export default {
           currentImage.description !== 'NULL'
               ? currentImage.description
               : '';
+      this.setImageScore(currentImage.image_id);
       this.$nextTick(() => {
         this.setImageDimensions();
       });
@@ -360,12 +374,14 @@ export default {
           .then((response) => {
             if (response.status === 200) {
               Message.success('Annotation saved successfully');
-              // 更新当前图片的数据
-              this.paginatedImages[0].tagList = JSON.parse(
-                  JSON.stringify(this.rows)
-              );
+              // Update current image data
+              this.paginatedImages[0].tagList = JSON.parse(JSON.stringify(this.rows));
               this.paginatedImages[0].description = this.textarea1;
               this.updateCurrentImage();
+              // Move to the next page after saving
+              if (this.currentPage < this.total) {
+                this.handlePageChange(this.currentPage + 1);
+              }
             } else {
               Message.error('Failed to save annotation');
             }
@@ -375,6 +391,7 @@ export default {
             Message.error('Error saving annotation');
           });
     },
+
     goToReferenceIntroPage() {
       this.$router.push({
         name: 'ReferenceIntro',
@@ -515,5 +532,11 @@ export default {
   width: 90px;
   margin-left: 10px;
   vertical-align: bottom;
+}
+.image-score {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
 }
 </style>

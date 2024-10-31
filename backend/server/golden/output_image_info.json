@@ -19,14 +19,14 @@
     },
     "2019": {
         "score_range": {
-            "lower_bound": 50,
-            "upper_bound": 100
+            "lower_bound": 25,
+            "upper_bound": 75
         }
     },
     "2020": {
         "score_range": {
-            "lower_bound": 25,
-            "upper_bound": 75
+            "lower_bound": 50,
+            "upper_bound": 100
         }
     },
     "2021": {
@@ -61,20 +61,20 @@
     },
     "2026": {
         "score_range": {
-            "lower_bound": 0,
-            "upper_bound": 25
+            "lower_bound": 25,
+            "upper_bound": 75
         }
     },
     "2027": {
         "score_range": {
-            "lower_bound": 50,
-            "upper_bound": 100
+            "lower_bound": 0,
+            "upper_bound": 25
         }
     },
     "2028": {
         "score_range": {
-            "lower_bound": 0,
-            "upper_bound": 50
+            "lower_bound": 50,
+            "upper_bound": 100
         }
     },
     "2029": {
@@ -97,14 +97,14 @@
     },
     "2032": {
         "score_range": {
-            "lower_bound": 25,
-            "upper_bound": 75
+            "lower_bound": 0,
+            "upper_bound": 50
         }
     },
     "2033": {
         "score_range": {
-            "lower_bound": 0,
-            "upper_bound": 50
+            "lower_bound": 25,
+            "upper_bound": 75
         }
     },
     "2034": {
@@ -115,8 +115,8 @@
     },
     "2035": {
         "score_range": {
-            "lower_bound": 50,
-            "upper_bound": 100
+            "lower_bound": 0,
+            "upper_bound": 50
         }
     },
     "2036": {
@@ -127,8 +127,8 @@
     },
     "2037": {
         "score_range": {
-            "lower_bound": 25,
-            "upper_bound": 75
+            "lower_bound": 50,
+            "upper_bound": 100
         }
     },
     "2038": {
@@ -151,8 +151,8 @@
     },
     "2041": {
         "score_range": {
-            "lower_bound": 0,
-            "upper_bound": 50
+            "lower_bound": 25,
+            "upper_bound": 75
         }
     },
     "2042": {
@@ -163,8 +163,8 @@
     },
     "2043": {
         "score_range": {
-            "lower_bound": 0,
-            "upper_bound": 50
+            "lower_bound": 25,
+            "upper_bound": 75
         }
     },
     "2044": {
@@ -182,7 +182,7 @@
     "2046": {
         "score_range": {
             "lower_bound": 0,
-            "upper_bound": 25
+            "upper_bound": 50
         }
     },
     "2047": {
@@ -199,20 +199,20 @@
     },
     "2049": {
         "score_range": {
-            "lower_bound": 0,
-            "upper_bound": 50
+            "lower_bound": 25,
+            "upper_bound": 75
         }
     },
     "2050": {
         "score_range": {
-            "lower_bound": 0,
-            "upper_bound": 50
+            "lower_bound": 25,
+            "upper_bound": 75
         }
     },
     "2051": {
         "score_range": {
-            "lower_bound": 50,
-            "upper_bound": 100
+            "lower_bound": 0,
+            "upper_bound": 25
         }
     },
     "2052": {
@@ -223,8 +223,8 @@
     },
     "2053": {
         "score_range": {
-            "lower_bound": 0,
-            "upper_bound": 50
+            "lower_bound": 50,
+            "upper_bound": 100
         }
     },
     "2054": {
@@ -235,65 +235,125 @@
     },
     "2055": {
         "score_range": {
-            "lower_bound": 25,
-            "upper_bound": 75
+            "lower_bound": 0,
+            "upper_bound": 50
         }
     },
     "2056": {
-        "score_range": {
-            "lower_bound": 25,
-            "upper_bound": 75
-        }
-    },
-    "2057": {
-        "score_range": {
-            "lower_bound": 25,
-            "upper_bound": 75
-        }
-    },
-    "2058": {
         "score_range": {
             "lower_bound": 0,
             "upper_bound": 50
         }
     },
-    "2059": {
+    "2057": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2058": {
         "score_range": {
             "lower_bound": 50,
             "upper_bound": 100
         }
     },
+    "2059": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
     "2060": {
         "score_range": {
             "lower_bound": 0,
-            "upper_bound": 25
+            "upper_bound": 50
         }
     },
     "2061": {
         "score_range": {
-            "lower_bound": 75,
-            "upper_bound": 100
+            "lower_bound": 0,
+            "upper_bound": 50
         }
     },
     "2062": {
         "score_range": {
-            "lower_bound": 0,
-            "upper_bound": 25
+            "lower_bound": 25,
+            "upper_bound": 75
         }
     },
     "2063": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2064": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2065": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2066": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2067": {
+        "score_range": {
+            "lower_bound": 50,
+            "upper_bound": 100
+        }
+    },
+    "2068": {
         "score_range": {
             "lower_bound": 0,
             "upper_bound": 25
         }
     },
-    "2064": {
+    "2069": {
+        "score_range": {
+            "lower_bound": 50,
+            "upper_bound": 100
+        }
+    },
+    "2070": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2071": {
         "score_range": {
             "lower_bound": 75,
             "upper_bound": 100
         }
     },
-    "2065": {
+    "2072": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2073": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 25
+        }
+    },
+    "2074": {
+        "score_range": {
+            "lower_bound": 75,
+            "upper_bound": 100
+        }
+    },
+    "2075": {
         "score_range": {
             "lower_bound": 50,
             "upper_bound": 100

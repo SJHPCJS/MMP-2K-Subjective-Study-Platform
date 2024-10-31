@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # 读取JSON数据
-with open('data.json', 'r', encoding='utf-8') as file:
+with open('siqi_result.json', 'r', encoding='utf-8') as file:
     data = json.load(file)
 
 # 转换为DataFrame
@@ -11,6 +11,7 @@ df = pd.DataFrame(data)
 
 # 计算每个批次的图像数量
 batch_counts = df['batch'].value_counts().sort_index()
+
 
 # 计算每个批次的平均评分
 batch_avg_rate = df.groupby('batch')['rate'].mean().sort_index()

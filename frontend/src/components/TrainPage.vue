@@ -1,118 +1,82 @@
 <template>
-    <el-container>
-        <el-header>
-            <div>Macro Photography IQA</div>
-            <div>{{ userId }}</div>
-        </el-header>
-        <el-main class="main">
-            <div class="content">
-                <div class="demo-image__preview">
-                    <el-image :src="url" :preview-src-list="srcList" :fit="fit">
-                    </el-image>
-                </div>
-                <el-tabs class="tabs" type="border-card" :tab-position="tabPosition">
-                    <el-tab-pane label="Rating">
-                        <div class="block">
-                            <el-slider step="25" v-model="value" vertical height="200px" :marks="marks" @change = handleChange>
-                            </el-slider>
-                            <el-button class="save-button" type="primary" round @click="open" plain>Save</el-button>
-                        </div>
-                    </el-tab-pane>
-                    <el-tab-pane label="Annotation">
-            <div style="overflow-y: auto; height: 680px;">
-              <div>
-                <el-button type="primary" round @click="addRow">Add</el-button>
-                <div v-for="(row, index) in rows" :key="index">
-                  This image is
-                  <el-select v-model="row.select1" placeholder="Select" size="mini">
-                    <el-option v-for="item in options1" :key="item.value" :label="item.label" :value="item.value">
-                    </el-option>
-                  </el-select>
-                  <el-select v-model="row.select2" placeholder="Select" size="mini">
-                    <el-option v-for="item in options2" :key="item.value" :label="item.label" :value="item.value">
-                    </el-option>
-                  </el-select>
-                  in
-                  <el-select v-model="row.select3" multiple placeholder="Select" size="mini">
-                    <el-option v-for="item in options3" :key="item.value" :label="item.label" :value="item.value">
-                    </el-option>
-                  </el-select>
-                  position.
-                  <el-button type="danger" size="mini" @click="removeRow(index)">Delete</el-button>
-                </div>
-              </div>
-              <div style="margin: 20px 0;"></div>
-              <div>
-                <el-input type="textarea" autosize placeholder="Anything else..." v-model="textarea1">
-                </el-input>
-              </div>
-              <div style="margin: 20px 0;"></div>
-              <el-button class="save-button" type="primary" round @click="goToTrainPage">Save</el-button>
-              <div style="margin: 20px 0;"></div>
-              <!-- <el-tag :key="tag" v-for="tag in dynamicTags" closable :disable-transitions="false"
-                @close="handleClose(tag)">
-                {{ tag }}
-              </el-tag>
-              <el-select v-if="inputVisible" v-model="inputValue" ref="saveTagInput" size="small"
-                @change="handleInputConfirm">
-                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-                </el-option>
-              </el-select>
-              <el-button v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button> -->
-              <el-collapse v-model="activeName" accordion>
-                <el-collapse-item title="Overexposure (too bright)" name="1">
-                  <div>Image becomes excessively bright or loses detail due to prolonged exposure time or excessive light.</div>
-                </el-collapse-item>
-                <el-collapse-item title="Underexposure (insufficient light)" name="2">
-                  <div>Image becomes excessively dark or lacks clarity due to insufficient exposure.</div>
-                </el-collapse-item>
-                <el-collapse-item title="Out of focus" name="3">
-                  <div>Image lacks clarity due to the lens not being properly focused.</div>
-                </el-collapse-item>
-                <el-collapse-item title="Blur" name="4">
-                  <div>Image lacks detail due to camera or subject movement during the capture.</div>
-                </el-collapse-item>
-                <el-collapse-item title="Low resolution" name="5">
-                  <div>Image has fewer pixels, resulting in a lack of clarity or distortion in the image details.</div>
-                </el-collapse-item>
-                <el-collapse-item title="Noisy and grainy" name="6">
-                  <div>The presence of random colors or grain-like interference in an image, resulting in distortion or lack of clarity in the image details.</div>
-                </el-collapse-item>
-              </el-collapse>
+  <el-container>
+    <el-header>
+      <div>Macro Photography IQA</div>
+      <div>{{ userId }}</div>
+    </el-header>
+    <el-main class="main">
+      <div class="content">
+        <div class="demo-image__preview">
+          <img :src="getImageUrl(currentImageId)" class="image" ref="imageElement">
+        </div>
+        <el-tabs class="tabs" type="border-card" :tab-position="tabPosition" v-model="activeTab">
+          <!-- Rating Tab -->
+          <el-tab-pane label="Rating" name="Rating">
+            <div class="block">
+              <el-slider :step="25" v-model="value" vertical height="200px" :marks="marks"></el-slider>
+              <el-button class="save-button" type="primary" round @click="checkRating">Save</el-button>
             </div>
           </el-tab-pane>
-                </el-tabs>
+
+          <!-- Annotation Tab -->
+          <el-tab-pane label="Annotation" name="Annotation">
+            <div class="annotation-content">
+              <el-button type="primary" round @click="addRow">Add</el-button>
+              <div v-for="(row, index) in rows" :key="index">
+                This image is
+                <el-select v-model="row.select1" placeholder="Select" size="mini">
+                  <el-option v-for="item in options1" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                </el-select>
+                <el-select v-model="row.select2" placeholder="Select" size="mini">
+                  <el-option v-for="item in options2" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                </el-select>
+                in
+                <el-select v-model="row.select3" multiple placeholder="Select" size="mini">
+                  <el-option v-for="item in options3" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                </el-select>
+                position.
+                <el-button type="danger" size="mini" @click="removeRow(index)">Delete</el-button>
+              </div>
+              <el-input type="textarea" autosize placeholder="Anything else..." v-model="textarea1" class="textarea"></el-input>
+              <el-button class="save-button" type="primary" round @click="saveAnnotation">Save</el-button>
             </div>
+          </el-tab-pane>
+        </el-tabs>
+      </div>
 
-            <div class="buttons-pagination-container">
-                <el-pagination class="pagination" background="true" layout="prev, pager, next"
-                    :total="1000"></el-pagination>
-                <div>
-                    <el-button type="primary" round @click="goToMenuPage">Menu</el-button>
-                    <el-button type="primary" round @click="goToResultPage">Result</el-button>
-                </div>
-
-                <el-pagination class="pagination" background layout="prev, pager, next" :total="1000"></el-pagination>
-                <div>
-                    <el-button type="primary" round @click="goToReferenceIntroPage">Introduction</el-button>
-                    <el-button type="primary" round @click="goToReferenceExamplePage">Examples</el-button>
-                    <el-button type="primary" round @click="goToMenuPage">Finish training</el-button>
-                </div>
-            </div>
-
-        </el-main>
-    </el-container>
+      <div class="footer">
+        <div class="pagination-container">
+          <el-pagination
+            class="pagination"
+            :background="true"
+            layout="prev, pager, next"
+            :page-size="1"
+            :current-page.sync="currentPage"
+            :total="totalImages"
+            @current-change="handlePageChange"
+          ></el-pagination>
+        </div>
+        <div class="button-group-right">
+          <el-button type="danger" round @click="endTraining">Finish Training</el-button>
+        </div>
+      </div>
+    </el-main>
+  </el-container>
 </template>
 
 <script>
+import imageInfo from "@/components/train/output_image_info.json";
+
 export default {
-    created() {
-        this.userId = this.$route.params.id;
-    },
-    data() {
-        return {
-            activeName: '0',
-      dynamicTags: [],
+  created() {
+    console.log("Loading images from JSON file...");
+    this.userId = this.$route.params.id;
+    this.loadImages();
+  },
+  data() {
+    return {
+      userId: null,
+      activeTab: 'Rating',
       rows: [],
       options1: [
         { value: 'slightly', label: 'slightly' },
@@ -120,25 +84,22 @@ export default {
         { value: 'strongly', label: 'strongly' },
       ],
       options2: [
-        { value: 'oversxposure', label: 'oversxposure' },
+        { value: 'overexposure', label: 'overexposure' },
         { value: 'underexposure', label: 'underexposure' },
         { value: 'out of focus', label: 'out of focus' },
         { value: 'blur', label: 'blur' },
         { value: 'low resolution', label: 'low resolution' },
         { value: 'noisy and grainy', label: 'noisy and grainy' },
-      ], options3: [
-        { value: 'center', label: 'center'},
+      ],
+      options3: [
+        { value: 'center', label: 'center' },
         { value: 'top left', label: 'top left' },
         { value: 'top right', label: 'top right' },
         { value: 'bottom left', label: 'bottom left' },
         { value: 'bottom right', label: 'bottom right' },
         { value: 'whole image', label: 'whole image' },
-        
       ],
-      inputVisible: false,
-      textarea: '',
-      inputValue: '',
-      userId: null,
+      textarea1: '',
       tabPosition: 'top',
       value: 50,
       marks: {
@@ -146,44 +107,72 @@ export default {
         25: 'Poor',
         50: 'Fair',
         75: 'Good',
-        100: 'Excellent'
+        100: 'Excellent',
       },
-      mark:'',
-      fits: 'contain',
-      url: require("../assets/background.jpg"),
-      srcList: [require("../assets/background.jpg")]
-        };
+      totalImages: 12,
+      currentPage: 1,
+      currentImageId: null,
+      images: [],
+      fit: 'contain',
+    };
+  },
+  methods: {
+    loadImages() {
+      const imageIds = Object.keys(imageInfo);
+      console.log("Image IDs from JSON:", imageIds);
+      this.images = imageIds.slice(0, this.totalImages);
+      console.log("Loaded images array:", this.images);
+      this.updateCurrentImage();
     },
-    methods: {
-        goToReferenceIntroPage() {
-      this.$router.push({ name: 'ReferenceIntro', params: { id: this.userId } });
+    getImageUrl(imageId) {
+      try {
+        return require(`@/components/train/${imageId}.jpg`);
+      } catch (error) {
+        console.error(`Error loading image with ID: ${imageId}`, error);
+        return require('@/assets/error.png');
+      }
     },
-    goToReferenceExamplePage() {
-      this.$router.push({ name: 'ReferenceExample', params: { id: this.userId } });
+    updateCurrentImage() {
+      this.currentImageId = this.images[this.currentPage - 1];
+      console.log("Current image ID:", this.currentImageId);
+
+      // 每次切换图片时将分数滑块重置为50
+      this.value = 50;
     },
-    goToMenuPage() {
-      this.$router.push({ name: 'MenuPage', params: { id: this.userId } });
+    handlePageChange(page) {
+      this.currentPage = page;
+      this.updateCurrentImage();
     },
-    goToResultPage() {
-      this.$router.push({ name: 'ResultPage', params: { id: this.userId } });
+    checkRating() {
+      const { lower_bound, upper_bound } = imageInfo[this.currentImageId].score_range;
+      if (this.value < lower_bound || this.value > upper_bound) {
+        this.$notify({
+          title: 'Warning',
+          message: `The rating should be between ${lower_bound} and ${upper_bound}`,
+          type: 'error',
+        });
+      } else {
+        this.$notify({
+          title: 'Success',
+          message: 'The rating is within the correct range!',
+          type: 'success',
+        });
+      }
     },
-    handleClose(tag) {
-      this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
-    },
-    showInput() {
-      this.inputVisible = true;
-      // eslint-disable-next-line
-      this.$nextTick(_ => {
-        this.$refs.saveTagInput.$refs.input.focus();
+    saveAnnotation() {
+      this.$notify({
+        title: 'Success',
+        message: 'Annotation saved successfully',
+        type: 'success',
       });
     },
-    handleInputConfirm() {
-      let inputValue = this.inputValue;
-      if (inputValue) {
-        this.dynamicTags.push(inputValue);
-      }
-      this.inputVisible = false;
-      this.inputValue = '';
+    endTraining() {
+      this.$notify({
+        title: 'Training Ended',
+        message: 'You have successfully completed the training!',
+        type: 'success',
+      });
+      this.$router.push({ name: 'MenuPage' });
     },
     addRow() {
       this.rows.push({ select1: '', select2: '', select3: '' });
@@ -191,98 +180,76 @@ export default {
     removeRow(index) {
       this.rows.splice(index, 1);
     },
-    handleChange(val) {
-      this.mark = val;
-    },
-    open() {
-    let type = this.mark === 50 ? 'success' : 'warning';
-    this.$notify({
-        title: 'Test',
-        message: 'The mark should be 50',
-        type: type
-    });
-},
-
-  }
-}
+  },
+};
 </script>
 
-
-<style>
+<style scoped>
 .el-header {
-    background-color: #143FAE;
-    color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 24px;
+  background-color: #143FAE;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 24px;
 }
 
 .main {
-    position: relative;
-    height: calc(100vh - 120px);
+  position: relative;
+  height: calc(100vh - 120px);
 }
 
 .content {
-    padding: 20px;
-    margin: 0;
-    flex-direction: row;
-    display: flex;
-    height: calc(100% - 100px);
-
+  padding: 20px;
+  margin: 0;
+  display: flex;
+  height: calc(100% - 100px);
 }
 
 .demo-image__preview {
-    flex: 1;
-    margin-right: 20px;
-    overflow: auto;
+  flex: 1;
+  margin-right: 20px;
+  overflow: auto;
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .tabs {
-    flex: 0.3;
-    margin-right: 20px;
+  flex: 0.3;
+  margin-right: 20px;
 }
 
-.collapse {
-    margin-top: 40px;
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
-.buttons-pagination-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 10px;
-}
-
-.pagination {
-    order: 2;
-}
-
-.button-group-left {
-    order: 1;
+.pagination-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .button-group-right {
-    order: 3;
-}
-
-.pagination {
-    position: absolute;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
+  margin-left: auto;
 }
 
 .block {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .save-button {
-    align-self: flex-end;
+  align-self: flex-end;
 }
 </style>
