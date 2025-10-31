@@ -1,0 +1,362 @@
+{
+    "2016": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2017": {
+        "score_range": {
+            "lower_bound": 50,
+            "upper_bound": 100
+        }
+    },
+    "2018": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2019": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2020": {
+        "score_range": {
+            "lower_bound": 50,
+            "upper_bound": 100
+        }
+    },
+    "2021": {
+        "score_range": {
+            "lower_bound": 50,
+            "upper_bound": 100
+        }
+    },
+    "2022": {
+        "score_range": {
+            "lower_bound": 75,
+            "upper_bound": 100
+        }
+    },
+    "2023": {
+        "score_range": {
+            "lower_bound": 50,
+            "upper_bound": 100
+        }
+    },
+    "2024": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2025": {
+        "score_range": {
+            "lower_bound": 50,
+            "upper_bound": 100
+        }
+    },
+    "2026": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2027": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 25
+        }
+    },
+    "2028": {
+        "score_range": {
+            "lower_bound": 50,
+            "upper_bound": 100
+        }
+    },
+    "2029": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2030": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2031": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2032": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2033": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2034": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2035": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2036": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2037": {
+        "score_range": {
+            "lower_bound": 50,
+            "upper_bound": 100
+        }
+    },
+    "2038": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2039": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2040": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2041": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2042": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2043": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2044": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2045": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2046": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2047": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2048": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2049": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2050": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2051": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 25
+        }
+    },
+    "2052": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2053": {
+        "score_range": {
+            "lower_bound": 50,
+            "upper_bound": 100
+        }
+    },
+    "2054": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2055": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2056": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2057": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2058": {
+        "score_range": {
+            "lower_bound": 50,
+            "upper_bound": 100
+        }
+    },
+    "2059": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2060": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2061": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2062": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2063": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2064": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2065": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2066": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2067": {
+        "score_range": {
+            "lower_bound": 50,
+            "upper_bound": 100
+        }
+    },
+    "2068": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 25
+        }
+    },
+    "2069": {
+        "score_range": {
+            "lower_bound": 50,
+            "upper_bound": 100
+        }
+    },
+    "2070": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 50
+        }
+    },
+    "2071": {
+        "score_range": {
+            "lower_bound": 75,
+            "upper_bound": 100
+        }
+    },
+    "2072": {
+        "score_range": {
+            "lower_bound": 25,
+            "upper_bound": 75
+        }
+    },
+    "2073": {
+        "score_range": {
+            "lower_bound": 0,
+            "upper_bound": 25
+        }
+    },
+    "2074": {
+        "score_range": {
+            "lower_bound": 75,
+            "upper_bound": 100
+        }
+    },
+    "2075": {
+        "score_range": {
+            "lower_bound": 50,
+            "upper_bound": 100
+        }
+    }
+}
